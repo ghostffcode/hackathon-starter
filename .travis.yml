@@ -1,13 +1,15 @@
 language: node_js
 node_js:
-  - "6"
-services:
-  - mongodb
-env:
-  - CXX=g++-4.8
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
+  - "8"
+  - "10"
+  - "12"
+services: mongodb  
+cache:  
+  directories:
+    - "node_modules"
+sudo: false
+install:
+  - npm install
+script:
+  - npm run lint
+  - npm test
